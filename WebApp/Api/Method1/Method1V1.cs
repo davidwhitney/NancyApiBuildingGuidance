@@ -1,5 +1,5 @@
 using Nancy;
-using WebApp.Versioning;
+using WebApp.Infrastructure.Versioning;
 
 namespace WebApp.Api.Method1
 {

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Nancy;
 
-namespace WebApp.Versioning
+namespace WebApp.Infrastructure.Versioning
 {
     public static class VersionContaraintExtensions
     {

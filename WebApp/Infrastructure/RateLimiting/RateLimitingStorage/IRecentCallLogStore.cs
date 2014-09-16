@@ -1,4 +1,4 @@
-﻿namespace WebApp.RateLimiting.RateLimitingStorage
+﻿namespace WebApp.Infrastructure.RateLimiting.RateLimitingStorage
 {
     public interface IRecentCallLogStore
     {

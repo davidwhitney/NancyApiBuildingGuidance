@@ -1,6 +1,6 @@
 using System.Collections.Concurrent;
 
-namespace WebApp.RateLimiting.RateLimitingStorage
+namespace WebApp.Infrastructure.RateLimiting.RateLimitingStorage
 {
     public class InMemorySingleInstanceRecentCallLogStore : IRecentCallLogStore
     {

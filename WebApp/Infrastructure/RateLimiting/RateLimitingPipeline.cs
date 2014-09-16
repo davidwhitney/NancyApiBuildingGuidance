@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using Nancy;
-using WebApp.RateLimiting.RateLimitingStorage;
+using WebApp.Infrastructure.RateLimiting.RateLimitingStorage;
 
-namespace WebApp.RateLimiting
+namespace WebApp.Infrastructure.RateLimiting
 {
     public class RateLimitingPipeline
     {

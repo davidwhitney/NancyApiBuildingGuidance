@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WebApp.RateLimiting
+namespace WebApp.Infrastructure.RateLimiting
 {
     public class RecentCallLog
     {
