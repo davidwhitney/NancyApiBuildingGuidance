@@ -1,4 +1,5 @@
 using Nancy;
+using WebApp.Versioning;
 
 namespace WebApp.Api.SomeMethodWithVersionsInOneModule
 {
