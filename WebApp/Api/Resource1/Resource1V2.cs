@@ -1,12 +1,12 @@
 using Nancy;
 using WebApp.Infrastructure.Versioning;
 
-namespace WebApp.Api.Method1
+namespace WebApp.Api.Resource1
 {
-    public class Method1V2 : NancyModule
+    public class Resource1V2 : NancyModule
     {
-        public Method1V2()
-            : base("/method1")
+        public Resource1V2()
+            : base("/resource1")
         {
             Get["/", c => c.ForVersion("2")] = param => Response.AsJson(new { hello = "world v2" });
         }

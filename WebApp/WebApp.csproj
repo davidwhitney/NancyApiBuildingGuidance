@@ -47,8 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Api\Method1\Method1V1.cs" />
-    <Compile Include="Api\Method1\Method1V2.cs" />
+    <Compile Include="Api\Resource1\Resource1V1.cs" />
+    <Compile Include="Api\Resource1\Resource1V2.cs" />
     <Compile Include="Infrastructure\AutoDoc\DocumentationModule.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Program.cs" />
@@ -58,7 +58,7 @@
     <Compile Include="Infrastructure\RateLimiting\RateLimitingPipeline.cs" />
     <Compile Include="Infrastructure\RateLimiting\RecentCallLog.cs" />
     <Compile Include="Infrastructure\Versioning\VersionContaraintExtensions.cs" />
-    <Compile Include="Api\SomeMethodWithVersionsInOneModule\SomeMethodWithVersionsInOneModule.cs" />
+    <Compile Include="Api\ResourceWithManyVersionsInOneModule\ResourceWithManyVersionsInOneModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
