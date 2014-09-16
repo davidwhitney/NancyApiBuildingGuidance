@@ -6,16 +6,16 @@ namespace WebApp
 {
     public class Bootstrapper : Nancy.DefaultNancyBootstrapper
     {
-        private readonly InMemorySingleInstanceRecentCallLogStore _callLog;
+        private readonly RateLimitingPipeline _rateLimiter;
 
         public Bootstrapper()
         {
-            _callLog = new InMemorySingleInstanceRecentCallLogStore();
+            _rateLimiter = new RateLimitingPipeline(new InMemorySingleInstanceRecentCallLogStore());
         }
 
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
-            pipelines.BeforeRequest += ctx => new RateLimitingPipeline(_callLog).RateLimitRequests(ctx, container);
+            pipelines.BeforeRequest += _rateLimiter.RateLimitRequests;
 
             base.ApplicationStartup(container, pipelines);
         }

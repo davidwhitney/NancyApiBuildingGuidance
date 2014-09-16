@@ -33,7 +33,7 @@ namespace WebApp.RateLimiting
             return accessAllowed;
         }
 
-        public Response RateLimitRequests(NancyContext context, TinyIoCContainer container)
+        public Response RateLimitRequests(NancyContext context)
         {
             if (AccessingApiAtAcceptableRate("api-key"))
             {
