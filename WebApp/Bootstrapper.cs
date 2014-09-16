@@ -1,6 +1,7 @@
 ﻿using Nancy.Bootstrapper;
 using Nancy.TinyIoc;
 using WebApp.RateLimiting;
+using WebApp.RateLimiting.RateLimitingStorage;
 
 namespace WebApp
 {

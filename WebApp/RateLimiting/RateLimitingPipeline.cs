@@ -1,19 +1,38 @@
 ﻿using System;
+using System.Linq;
 using Nancy;
-using Nancy.TinyIoc;
+using WebApp.RateLimiting.RateLimitingStorage;
 
 namespace WebApp.RateLimiting
 {
     public class RateLimitingPipeline
-    {                
-        private readonly IRecentCallLogStore _recentCallLogStore;
+    {
+        private const string ApiKeyHeader = "x-api-key";  
         
         private const int RateLimit = 5;
         private static readonly TimeSpan RateLimitWindow = new TimeSpan(0, 0, 0, 10);
+        private readonly IRecentCallLogStore _recentCallLogStore;
 
         public RateLimitingPipeline(IRecentCallLogStore recentCallLogStore)
         {
             _recentCallLogStore = recentCallLogStore;
+        }
+
+        public Response RateLimitRequests(NancyContext context)
+        {
+            if (!context.Request.Headers.Keys.Contains(ApiKeyHeader))
+            {
+                return HttpStatusCode.Unauthorized;
+            }
+
+            var key = context.Request.Headers[ApiKeyHeader].Single();
+
+            if (AccessingApiAtAcceptableRate(key))
+            {
+                return null;
+            }
+
+            return HttpStatusCode.EnhanceYourCalm;
         }
 
         public bool AccessingApiAtAcceptableRate(string key)
@@ -31,16 +50,6 @@ namespace WebApp.RateLimiting
             _recentCallLogStore.StoreAccessLog(log);
 
             return accessAllowed;
-        }
-
-        public Response RateLimitRequests(NancyContext context)
-        {
-            if (AccessingApiAtAcceptableRate("api-key"))
-            {
-                return null;
-            }
-
-            return HttpStatusCode.EnhanceYourCalm;
         }
     }
 }
