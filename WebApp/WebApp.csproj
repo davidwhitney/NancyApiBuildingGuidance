@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Api\Resource1\Resource1V1.cs" />
     <Compile Include="Api\Resource1\Resource1V2.cs" />
+    <Compile Include="Api\ResourceWithConneg\ResourceWithConneg.cs" />
     <Compile Include="Infrastructure\AutoDoc\DocumentationModule.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Program.cs" />
