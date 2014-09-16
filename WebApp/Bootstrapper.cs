@@ -1,5 +1,6 @@
 ﻿using Nancy.Bootstrapper;
 using Nancy.TinyIoc;
+using WebApp.Infrastructure.AutoDoc;
 using WebApp.Infrastructure.RateLimiting;
 using WebApp.Infrastructure.RateLimiting.RateLimitingStorage;
 
@@ -16,6 +17,7 @@ namespace WebApp
 
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
+            DocumentationModule.CreateModuleFunc = t => (Nancy.NancyModule) container.Resolve(t);
             pipelines.BeforeRequest += _rateLimiter.RateLimitRequests;
 
             base.ApplicationStartup(container, pipelines);

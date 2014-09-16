@@ -24,9 +24,14 @@ namespace WebApp.Infrastructure.CustomMediaTypes.Application_FlatText
 
         public ProcessorMatch CanProcess(MediaRange requestedMediaRange, dynamic model, NancyContext context)
         {
+            if (requestedMediaRange.IsWildcard)
+            {
+                return new ProcessorMatch { ModelResult = MatchResult.NonExactMatch, RequestedContentTypeResult = MatchResult.NoMatch };
+            }
+
             return !requestedMediaRange.Matches(CustomContentType) 
-                ? new ProcessorMatch { ModelResult = MatchResult.DontCare, RequestedContentTypeResult = MatchResult.NoMatch } 
-                : new ProcessorMatch { ModelResult = MatchResult.DontCare, RequestedContentTypeResult = MatchResult.ExactMatch };
+                ? new ProcessorMatch { ModelResult = MatchResult.NonExactMatch, RequestedContentTypeResult = MatchResult.NoMatch } 
+                : new ProcessorMatch { ModelResult = MatchResult.ExactMatch, RequestedContentTypeResult = MatchResult.ExactMatch };
         }
 
         public Response Process(MediaRange requestedMediaRange, dynamic model, NancyContext context)
